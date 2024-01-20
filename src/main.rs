@@ -20,17 +20,18 @@ fn main() -> Result<(), Error> {
     for line in BufReader::new(file).lines().flatten() {
         if let Some(caps) = R.captures(line.as_str()) {
             let addr = caps.get(1).unwrap().as_str();
+            let addr = u64::from_str_radix(addr, 16).expect("Failed to parse addr");
             let bytes = caps.get(2).unwrap().as_str();
             let bytes_trim = bytes.replace(' ', "");
             let inst = caps.get(4).unwrap().as_str();
             let operands = caps.get(5).unwrap().as_str();
 
-            let operands_ = V.replace_all(operands, |caps: &Captures| {
+            let operands_ = V.replace_all(operands, |_caps: &Captures| {
                 // println!("{:?}", caps.get(1).unwrap());
                 ""
             });
 
-            println!("d \"{} {}\" {} {} ()", inst, operands_, bytes_trim, addr);
+            println!("d \"{} {}\" {} {:#08x} ()", inst, operands_, bytes_trim, addr);
         }
     }
     Ok(())
