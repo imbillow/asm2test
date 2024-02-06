@@ -113,4 +113,23 @@ fn main() {
 
     let x = 0b00111001011000001101011111111111_u32.to_le_bytes();
     println!("d \"syscall\" {} 0x100000 ()", hex::encode(&x));
+
+    let x = 0b00000010000000001111111111101111_u32.to_le_bytes();
+    println!("d \"sasf\" {} 0x100000 ()", hex::encode(&x));
+    let x = 0b00000000000000001111111111101111_u32.to_le_bytes();
+    println!("d \"setf\" {} 0x100000 ()", hex::encode(&x));
+
+    let x = 0b11111000100000101111111111111111_u32.to_le_bytes();
+    println!("d \"shr\" {} 0x100000 ()", hex::encode(&x));
+    let x = 0b11111000101000101111111111111111_u32.to_le_bytes();
+    println!("d \"sar\" {} 0x100000 ()", hex::encode(&x));
+
+    let x = 0b0000000000111000001111111111111111_u32.to_le_bytes();
+    println!("d \"set1\" {} 0x100000 ()", hex::encode(&x));
+    let x = 0b0000000000111001101111111111111111_u32.to_le_bytes();
+    println!("d \"tst1\" {} 0x100000 ()", hex::encode(&x));
+    let x = 0b0000000000111000101111111111111111_u32.to_le_bytes();
+    println!("d \"not1\" {} 0x100000 ()", hex::encode(&x));
+    let x = 0b0000000000111001001111111111111111_u32.to_le_bytes();
+    println!("d \"clr1\" {} 0x100000 ()", hex::encode(&x));
 }
